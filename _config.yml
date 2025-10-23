@@ -29,7 +29,7 @@ remote_theme: pages-themes/minimal@v0.2.0
 github_username: rafaelbeirigo
 
 # Build settings
-theme: minima
+theme: jekyll-theme-hacker
 plugins:
   - jekyll-feed
 

@@ -13,16 +13,16 @@ tags:
 
 # Table of Contents
 
-1.  [Description and Hints](#orgd259909)
-2.  [Assets](#org9fbf909)
-    1.  [`picker-IV.c`](#org30a98ad)
-    2.  [`picker-IV`](#org57a6bc5)
-3.  [Input `win`'s address to get the flag](#org927a1f8)
-4.  [Takeaways](#org8ae92de)
-5.  [Risks and Mitigations](#orgb6acb4d)
+1.  [Description and Hints](#org4d3af5f)
+2.  [Assets](#org9c94ccc)
+    1.  [`picker-IV.c`](#org7a632bb)
+    2.  [`picker-IV`](#org1469e7b)
+3.  [Input `win`'s address to get the flag](#org0f9a3da)
+4.  [Takeaways](#org5d85c8d)
+5.  [Risks and Mitigations](#org8c20a25)
 
 
-<a id="orgd259909"></a>
+<a id="org4d3af5f"></a>
 
 # Description and Hints
 
@@ -36,7 +36,7 @@ and given the following hints:
 > 2.  How can you find the address that `win` is at?
 
 
-<a id="org9fbf909"></a>
+<a id="org9c94ccc"></a>
 
 # Assets
 
@@ -46,7 +46,7 @@ We are given the following assets:
 2.  Its source code `picker-IV.c`.
 
 
-<a id="org30a98ad"></a>
+<a id="org7a632bb"></a>
 
 ## `picker-IV.c`
 
@@ -127,7 +127,7 @@ ELF files are *programs*: a chunk of bytes that we can run on the computer, and 
 In the next section we analyze the chunk we got here.
 
 
-<a id="org57a6bc5"></a>
+<a id="org1469e7b"></a>
 
 ## `picker-IV`
 
@@ -162,7 +162,7 @@ readelf --symbols picker-IV | grep win
 The address of `win` is `40129e`.
 
 ​**Note:** If we run the command without the `grep` part, we can see the headers of the symbol table.
-*Value* is the value of the memory address, and *Name* the name of the symbol; in our case the `FUNCTION` `win`.
+*Value* is the value of the memory address, and *Name* the name of the symbol; in our case the `FUNC~tion ~win`.
 Below we can see a stripped output with just the header and `win`'s line.
 
 {% highlight shell %}
@@ -173,7 +173,7 @@ readelf --symbols picker-IV
      63: 000000000040129e   150 FUNC    GLOBAL DEFAULT   15 win 
 
 
-<a id="org927a1f8"></a>
+<a id="org0f9a3da"></a>
 
 # Input `win`'s address to get the flag
 
@@ -236,7 +236,7 @@ There's the same address, but with the prefix `0x`.
 This also makes it much easier *reverse engineering* that binary.
 
 
-<a id="org8ae92de"></a>
+<a id="org5d85c8d"></a>
 
 # Takeaways
 
@@ -247,7 +247,7 @@ This also makes it much easier *reverse engineering* that binary.
     We may use `readelf` or `gdb` for that.
 
 
-<a id="orgb6acb4d"></a>
+<a id="org8c20a25"></a>
 
 # Risks and Mitigations
 

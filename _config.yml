@@ -28,6 +28,9 @@ url: "https://rafaelbeirigo.github.io/cybersec-dojo"
 remote_theme: pages-themes/minimal@v0.2.0
 github_username: rafaelbeirigo
 
+github:
+  repository_url: https://github.com/rafaelbeirigo/cybersec-dojo
+
 # Build settings
 theme: jekyll-theme-hacker
 plugins:

@@ -25,7 +25,6 @@ description: >- # this means to ignore newlines until "baseurl:"
   "Writeups, research and recon."
 baseurl: ""
 url: "https://rafaelbeirigo.github.io/cybersec-dojo"
-remote_theme: pages-themes/minimal@v0.2.0
 github_username: rafaelbeirigo
 
 github:

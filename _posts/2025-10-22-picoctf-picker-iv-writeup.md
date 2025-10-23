@@ -13,16 +13,16 @@ tags:
 
 # Table of Contents
 
-1.  [Description and Hints](#orga324c79)
-2.  [Assets](#orgdea4431)
-    1.  [`picker-IV.c`](#org8caa10e)
-    2.  [`picker-IV`](#org7e1bded)
-3.  [Input `win`'s address to get the flag](#org3c7d24c)
-4.  [Takeaways](#orga911978)
-5.  [Risks and Mitigations](#org80ee3c2)
+1.  [Description and Hints](#org9679e5c)
+2.  [Assets](#orgda0015d)
+    1.  [`picker-IV.c`](#org5cf5933)
+    2.  [`picker-IV`](#org1574107)
+3.  [Input `win`'s address to get the flag](#org0567d05)
+4.  [Takeaways](#orgb05f5ee)
+5.  [Risks and Mitigations](#org5cf1d9a)
 
 
-<a id="orga324c79"></a>
+<a id="org9679e5c"></a>
 
 # Description and Hints
 
@@ -36,7 +36,7 @@ and given the following hints:
 > 2.  How can you find the address that `win` is at?
 
 
-<a id="orgdea4431"></a>
+<a id="orgda0015d"></a>
 
 # Assets
 
@@ -46,7 +46,7 @@ We are given the following assets:
 2.  Its source code `picker-IV.c`.
 
 
-<a id="org8caa10e"></a>
+<a id="org5cf5933"></a>
 
 ## `picker-IV.c`
 
@@ -127,7 +127,7 @@ ELF files are *programs*: a chunk of bytes that we can run on the computer, and 
 In the next section we analyze the chunk we got here.
 
 
-<a id="org7e1bded"></a>
+<a id="org1574107"></a>
 
 ## `picker-IV`
 
@@ -173,7 +173,7 @@ readelf --symbols picker-IV
      63: 000000000040129e   150 FUNC    GLOBAL DEFAULT   15 win 
 
 
-<a id="org3c7d24c"></a>
+<a id="org0567d05"></a>
 
 # Input `win`'s address to get the flag
 
@@ -236,7 +236,7 @@ There's the same address, but with the prefix `0x`.
 This also makes it much easier *reverse engineering* that binary.
 
 
-<a id="orga911978"></a>
+<a id="orgb05f5ee"></a>
 
 # Takeaways
 
@@ -244,10 +244,10 @@ This also makes it much easier *reverse engineering* that binary.
     It always keep a pointer to the memory address of the next instruction it will execute.
     If we have a way to change that pointer, we control the program's execution.
 2.  It is possible to obtain the address of a given function on a program that is *not stripped*.
-    We may use `readelf` of `gdb` for that.
+    We may use `readelf` or `gdb` for that.
 
 
-<a id="org80ee3c2"></a>
+<a id="org5cf1d9a"></a>
 
 # Risks and Mitigations
 

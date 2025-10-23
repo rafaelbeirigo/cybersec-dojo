@@ -13,16 +13,16 @@ tags:
 
 # Table of Contents
 
-1.  [Description and Hints](#org9679e5c)
-2.  [Assets](#orgda0015d)
-    1.  [`picker-IV.c`](#org5cf5933)
-    2.  [`picker-IV`](#org1574107)
-3.  [Input `win`'s address to get the flag](#org0567d05)
-4.  [Takeaways](#orgb05f5ee)
-5.  [Risks and Mitigations](#org5cf1d9a)
+1.  [Description and Hints](#orgd259909)
+2.  [Assets](#org9fbf909)
+    1.  [`picker-IV.c`](#org30a98ad)
+    2.  [`picker-IV`](#org57a6bc5)
+3.  [Input `win`'s address to get the flag](#org927a1f8)
+4.  [Takeaways](#org8ae92de)
+5.  [Risks and Mitigations](#orgb6acb4d)
 
 
-<a id="org9679e5c"></a>
+<a id="orgd259909"></a>
 
 # Description and Hints
 
@@ -36,7 +36,7 @@ and given the following hints:
 > 2.  How can you find the address that `win` is at?
 
 
-<a id="orgda0015d"></a>
+<a id="org9fbf909"></a>
 
 # Assets
 
@@ -46,7 +46,7 @@ We are given the following assets:
 2.  Its source code `picker-IV.c`.
 
 
-<a id="org5cf5933"></a>
+<a id="org30a98ad"></a>
 
 ## `picker-IV.c`
 
@@ -101,7 +101,7 @@ int main() {
 
   void (*foo)(void) = (void (*)())val;
   foo();
-u}
+}
 {% endhighlight %}
 
 After a quick inspection of the code, we have:
@@ -127,7 +127,7 @@ ELF files are *programs*: a chunk of bytes that we can run on the computer, and 
 In the next section we analyze the chunk we got here.
 
 
-<a id="org1574107"></a>
+<a id="org57a6bc5"></a>
 
 ## `picker-IV`
 
@@ -173,7 +173,7 @@ readelf --symbols picker-IV
      63: 000000000040129e   150 FUNC    GLOBAL DEFAULT   15 win 
 
 
-<a id="org0567d05"></a>
+<a id="org927a1f8"></a>
 
 # Input `win`'s address to get the flag
 
@@ -236,7 +236,7 @@ There's the same address, but with the prefix `0x`.
 This also makes it much easier *reverse engineering* that binary.
 
 
-<a id="orgb05f5ee"></a>
+<a id="org8ae92de"></a>
 
 # Takeaways
 
@@ -247,7 +247,7 @@ This also makes it much easier *reverse engineering* that binary.
     We may use `readelf` or `gdb` for that.
 
 
-<a id="org5cf1d9a"></a>
+<a id="orgb6acb4d"></a>
 
 # Risks and Mitigations
 

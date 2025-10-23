@@ -13,16 +13,16 @@ tags:
 
 # Table of Contents
 
-1.  [Description and Hints](#org4d3af5f)
-2.  [Assets](#org9c94ccc)
-    1.  [`picker-IV.c`](#org7a632bb)
-    2.  [`picker-IV`](#org1469e7b)
-3.  [Input `win`'s address to get the flag](#org0f9a3da)
-4.  [Takeaways](#org5d85c8d)
-5.  [Risks and Mitigations](#org8c20a25)
+1.  [Description and Hints](#org67790bc)
+2.  [Assets](#org79aa91a)
+    1.  [`picker-IV.c`](#orgbf2e503)
+    2.  [`picker-IV`](#orgadbaa76)
+3.  [Input `win`'s address to get the flag](#org32e92f1)
+4.  [Takeaways](#orgfd3b0de)
+5.  [Risks and Mitigations](#orgc1a7203)
 
 
-<a id="org4d3af5f"></a>
+<a id="org67790bc"></a>
 
 # Description and Hints
 
@@ -36,7 +36,7 @@ and given the following hints:
 > 2.  How can you find the address that `win` is at?
 
 
-<a id="org9c94ccc"></a>
+<a id="org79aa91a"></a>
 
 # Assets
 
@@ -46,7 +46,7 @@ We are given the following assets:
 2.  Its source code `picker-IV.c`.
 
 
-<a id="org7a632bb"></a>
+<a id="orgbf2e503"></a>
 
 ## `picker-IV.c`
 
@@ -127,7 +127,7 @@ ELF files are *programs*: a chunk of bytes that we can run on the computer, and 
 In the next section we analyze the chunk we got here.
 
 
-<a id="org1469e7b"></a>
+<a id="orgadbaa76"></a>
 
 ## `picker-IV`
 
@@ -173,7 +173,7 @@ readelf --symbols picker-IV
      63: 000000000040129e   150 FUNC    GLOBAL DEFAULT   15 win 
 
 
-<a id="org0f9a3da"></a>
+<a id="org32e92f1"></a>
 
 # Input `win`'s address to get the flag
 
@@ -236,7 +236,7 @@ There's the same address, but with the prefix `0x`.
 This also makes it much easier *reverse engineering* that binary.
 
 
-<a id="org5d85c8d"></a>
+<a id="orgfd3b0de"></a>
 
 # Takeaways
 
@@ -247,7 +247,7 @@ This also makes it much easier *reverse engineering* that binary.
     We may use `readelf` or `gdb` for that.
 
 
-<a id="org8c20a25"></a>
+<a id="orgc1a7203"></a>
 
 # Risks and Mitigations
 
@@ -260,7 +260,7 @@ Mitigations:
 1.  Never jump to user supplied addresses; instead, provide a list of secure functionalities (e.g., menus, buttons);
 2.  Apply *symbol hardening* techniques when compiling (example below).
 
-Here is a more secure compile command (courtesy of ChatGPT) for our program, that removes the symbol names, and also change the addresses of the functions (including `win`), besides other protection techniques (complete list below).
+Here is a more secure compile command (courtesy of ChatGPT) for our program, that removes the symbol names, and also changes the addresses of the functions (including `win`), besides other protection techniques (complete list below).
 
 {% highlight shell %}
 gcc -O2 -fPIE -pie -fstack-protector-strong -D_FORTIFY_SOURCE=2 \

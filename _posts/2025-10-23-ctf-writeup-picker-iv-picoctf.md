@@ -1,5 +1,5 @@
 ---
-title: "picoCTF Picker IV Writeup"
+title: "CTF Writeup: Picker IV (picoCTF)"
 date: 2025-10-22 20:22
 layout: post
 categories: 
@@ -13,16 +13,16 @@ tags:
 
 # Table of Contents
 
-1.  [Description and Hints](#org67790bc)
-2.  [Assets](#org79aa91a)
-    1.  [`picker-IV.c`](#orgbf2e503)
-    2.  [`picker-IV`](#orgadbaa76)
-3.  [Input `win`'s address to get the flag](#org32e92f1)
-4.  [Takeaways](#orgfd3b0de)
-5.  [Risks and Mitigations](#orgc1a7203)
+1.  [Description and Hints](#orgdb9f5c2)
+2.  [Assets](#org5e3ff8d)
+    1.  [`picker-IV.c`](#orgd829935)
+    2.  [`picker-IV`](#orgf9fd6f4)
+3.  [Input `win`'s address to get the flag](#org0545f0c)
+4.  [Takeaways](#org01cf45b)
+5.  [Risks and Mitigations](#orga29662c)
 
 
-<a id="org67790bc"></a>
+<a id="orgdb9f5c2"></a>
 
 # Description and Hints
 
@@ -36,7 +36,7 @@ and given the following hints:
 > 2.  How can you find the address that `win` is at?
 
 
-<a id="org79aa91a"></a>
+<a id="org5e3ff8d"></a>
 
 # Assets
 
@@ -46,7 +46,7 @@ We are given the following assets:
 2.  Its source code `picker-IV.c`.
 
 
-<a id="orgbf2e503"></a>
+<a id="orgd829935"></a>
 
 ## `picker-IV.c`
 
@@ -127,7 +127,7 @@ ELF files are *programs*: a chunk of bytes that we can run on the computer, and 
 In the next section we analyze the chunk we got here.
 
 
-<a id="orgadbaa76"></a>
+<a id="orgf9fd6f4"></a>
 
 ## `picker-IV`
 
@@ -173,7 +173,7 @@ readelf --symbols picker-IV
      63: 000000000040129e   150 FUNC    GLOBAL DEFAULT   15 win 
 
 
-<a id="org32e92f1"></a>
+<a id="org0545f0c"></a>
 
 # Input `win`'s address to get the flag
 
@@ -236,7 +236,7 @@ There's the same address, but with the prefix `0x`.
 This also makes it much easier *reverse engineering* that binary.
 
 
-<a id="orgfd3b0de"></a>
+<a id="org01cf45b"></a>
 
 # Takeaways
 
@@ -247,7 +247,7 @@ This also makes it much easier *reverse engineering* that binary.
     We may use `readelf` or `gdb` for that.
 
 
-<a id="orgc1a7203"></a>
+<a id="orga29662c"></a>
 
 # Risks and Mitigations
 

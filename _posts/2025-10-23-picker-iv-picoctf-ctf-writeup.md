@@ -1,28 +1,29 @@
 ---
-title: "CTF Writeup: Picker IV (picoCTF)"
-date: 2025-10-22 20:22
+title: "Picker IV (picoCTF)—CTF Writeup"
+date: 2025-10-23 15:11
 layout: post
 categories: 
-- Binary-Exploitation
+- CTF 
+- Writeup
 tags: 
+- binary-exploitation 
 - ctf 
-- writeup 
-- binary-exploitation
+- writeup
 ---
 
 
 # Table of Contents
 
-1.  [Description and Hints](#orgdb9f5c2)
-2.  [Assets](#org5e3ff8d)
-    1.  [`picker-IV.c`](#orgd829935)
-    2.  [`picker-IV`](#orgf9fd6f4)
-3.  [Input `win`'s address to get the flag](#org0545f0c)
-4.  [Takeaways](#org01cf45b)
-5.  [Risks and Mitigations](#orga29662c)
+1.  [Description and Hints](#orgdd9ce99)
+2.  [Assets](#orgb2148a3)
+    1.  [`picker-IV.c`](#org66b874b)
+    2.  [`picker-IV`](#org31debd1)
+3.  [Input `win`'s address to get the flag](#org84ae7ed)
+4.  [Takeaways](#org55536e1)
+5.  [Risks and Mitigations](#orga7ca03b)
 
 
-<a id="orgdb9f5c2"></a>
+<a id="orgdd9ce99"></a>
 
 # Description and Hints
 
@@ -36,7 +37,7 @@ and given the following hints:
 > 2.  How can you find the address that `win` is at?
 
 
-<a id="org5e3ff8d"></a>
+<a id="orgb2148a3"></a>
 
 # Assets
 
@@ -46,7 +47,7 @@ We are given the following assets:
 2.  Its source code `picker-IV.c`.
 
 
-<a id="orgd829935"></a>
+<a id="org66b874b"></a>
 
 ## `picker-IV.c`
 
@@ -127,7 +128,7 @@ ELF files are *programs*: a chunk of bytes that we can run on the computer, and 
 In the next section we analyze the chunk we got here.
 
 
-<a id="orgf9fd6f4"></a>
+<a id="org31debd1"></a>
 
 ## `picker-IV`
 
@@ -173,7 +174,7 @@ readelf --symbols picker-IV
      63: 000000000040129e   150 FUNC    GLOBAL DEFAULT   15 win 
 
 
-<a id="org0545f0c"></a>
+<a id="org84ae7ed"></a>
 
 # Input `win`'s address to get the flag
 
@@ -182,7 +183,7 @@ We then run the `netcat` (`nc`) command to connect to `picker-IV` running on pic
     Enter the address in hex to jump to, excluding '0x': 40129e
     You input 0x40129e
     You won!
-    picoCTF{n3v3rbb_jump_t0_u53r_5uppl13d_4ddr35535}
+    picoCTF{n3v3r_jump_t0_u53r_5uppl13d_4ddr35535}
 
 ​**Note:** `readelf` does not output the address with `0x` (which indicates the number is in hexadecimal).
 On the other hand, `gdb` does.
@@ -236,7 +237,7 @@ There's the same address, but with the prefix `0x`.
 This also makes it much easier *reverse engineering* that binary.
 
 
-<a id="org01cf45b"></a>
+<a id="org55536e1"></a>
 
 # Takeaways
 
@@ -247,11 +248,11 @@ This also makes it much easier *reverse engineering* that binary.
     We may use `readelf` or `gdb` for that.
 
 
-<a id="orga29662c"></a>
+<a id="orga7ca03b"></a>
 
 # Risks and Mitigations
 
-As `n3v3rbb_jump_t0_u53r_5uppl13d_4ddr35535` suggests, allowing the user to supply jump addresses may not be a good idea.
+As `n3v3r_jump_t0_u53r_5uppl13d_4ddr35535` suggests, allowing the user to supply jump addresses may not be a good idea.
 In this case we were able to access the most important *secret* of the challenge: the flag.
 In real scenarios, this poses a severe security threat: a malicious user may control the program execution in harmful ways.
 

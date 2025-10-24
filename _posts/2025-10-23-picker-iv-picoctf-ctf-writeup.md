@@ -14,16 +14,16 @@ tags:
 
 # Table of Contents
 
-1.  [Description and Hints](#orgad7ab9c)
-2.  [Assets](#org98b8dd8)
-    1.  [`picker-IV.c`](#org7eeec06)
-    2.  [`picker-IV`](#org6a295a0)
-3.  [Input `win`'s address to get the flag](#org34c71a6)
-4.  [Takeaways](#org8b56e93)
-5.  [Risks and Mitigations](#org7091bb3)
+1.  [Description and Hints](#orgb73f26a)
+2.  [Assets](#orge368fed)
+    1.  [`picker-IV.c`](#org7fce816)
+    2.  [`picker-IV`](#orge043842)
+3.  [Input `win`'s address to get the flag](#org4ae31a4)
+4.  [Takeaways](#org8ed88ae)
+5.  [Risks and Mitigations](#org2afec56)
 
 
-<a id="orgad7ab9c"></a>
+<a id="orgb73f26a"></a>
 
 # Description and Hints
 
@@ -37,7 +37,7 @@ and given the following hints:
 > 2.  How can you find the address that `win` is at?
 
 
-<a id="org98b8dd8"></a>
+<a id="orge368fed"></a>
 
 # Assets
 
@@ -47,7 +47,7 @@ We are given the following assets:
 2.  Its source code `picker-IV.c`.
 
 
-<a id="org7eeec06"></a>
+<a id="org7fce816"></a>
 
 ## `picker-IV.c`
 
@@ -118,7 +118,6 @@ One way to do that is by using the program `readelf`.
 From the `man` page:
 
 > `readelf` displays information about one or more ELF format object files.
-> The options control what particular information to display.
 
 From [Wikipedia](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format):
 
@@ -128,7 +127,7 @@ ELF files are *programs*: a chunk of bytes that we can run on the computer, and 
 In the next section we analyze the chunk we got here.
 
 
-<a id="org6a295a0"></a>
+<a id="orge043842"></a>
 
 ## `picker-IV`
 
@@ -174,7 +173,7 @@ readelf --symbols picker-IV
      63: 000000000040129e   150 FUNC    GLOBAL DEFAULT   15 win 
 
 
-<a id="org34c71a6"></a>
+<a id="org4ae31a4"></a>
 
 # Input `win`'s address to get the flag
 
@@ -237,7 +236,7 @@ There's the same address, but with the prefix `0x`.
 This also makes it much easier *reverse engineering* that binary.
 
 
-<a id="org8b56e93"></a>
+<a id="org8ed88ae"></a>
 
 # Takeaways
 
@@ -248,7 +247,7 @@ This also makes it much easier *reverse engineering* that binary.
     We may use `readelf` or `gdb` for that.
 
 
-<a id="org7091bb3"></a>
+<a id="org2afec56"></a>
 
 # Risks and Mitigations
 

@@ -14,16 +14,16 @@ tags:
 
 # Table of Contents
 
-1.  [Description and Hints](#orgdd9ce99)
-2.  [Assets](#orgb2148a3)
-    1.  [`picker-IV.c`](#org66b874b)
-    2.  [`picker-IV`](#org31debd1)
-3.  [Input `win`'s address to get the flag](#org84ae7ed)
-4.  [Takeaways](#org55536e1)
-5.  [Risks and Mitigations](#orga7ca03b)
+1.  [Description and Hints](#orgad7ab9c)
+2.  [Assets](#org98b8dd8)
+    1.  [`picker-IV.c`](#org7eeec06)
+    2.  [`picker-IV`](#org6a295a0)
+3.  [Input `win`'s address to get the flag](#org34c71a6)
+4.  [Takeaways](#org8b56e93)
+5.  [Risks and Mitigations](#org7091bb3)
 
 
-<a id="orgdd9ce99"></a>
+<a id="orgad7ab9c"></a>
 
 # Description and Hints
 
@@ -37,7 +37,7 @@ and given the following hints:
 > 2.  How can you find the address that `win` is at?
 
 
-<a id="orgb2148a3"></a>
+<a id="org98b8dd8"></a>
 
 # Assets
 
@@ -47,7 +47,7 @@ We are given the following assets:
 2.  Its source code `picker-IV.c`.
 
 
-<a id="org66b874b"></a>
+<a id="org7eeec06"></a>
 
 ## `picker-IV.c`
 
@@ -122,13 +122,13 @@ From the `man` page:
 
 From [Wikipedia](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format):
 
-> In computing, the Executable and Linkable Format [&#x2026;] is a common standard file format for executable files, object code, shared libraries, device drivers, and core dumps.
+> In computing, the Executable and Linkable Format (ELF [&#x2026;]) is a common standard file format for executable files, object code, shared libraries, device drivers, and core dumps.
 
 ELF files are *programs*: a chunk of bytes that we can run on the computer, and `readelf` gives us info about those ELFs.
 In the next section we analyze the chunk we got here.
 
 
-<a id="org31debd1"></a>
+<a id="org6a295a0"></a>
 
 ## `picker-IV`
 
@@ -174,7 +174,7 @@ readelf --symbols picker-IV
      63: 000000000040129e   150 FUNC    GLOBAL DEFAULT   15 win 
 
 
-<a id="org84ae7ed"></a>
+<a id="org34c71a6"></a>
 
 # Input `win`'s address to get the flag
 
@@ -237,7 +237,7 @@ There's the same address, but with the prefix `0x`.
 This also makes it much easier *reverse engineering* that binary.
 
 
-<a id="org55536e1"></a>
+<a id="org8b56e93"></a>
 
 # Takeaways
 
@@ -248,7 +248,7 @@ This also makes it much easier *reverse engineering* that binary.
     We may use `readelf` or `gdb` for that.
 
 
-<a id="orga7ca03b"></a>
+<a id="org7091bb3"></a>
 
 # Risks and Mitigations
 
